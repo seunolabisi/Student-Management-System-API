@@ -55,3 +55,19 @@ exports.getAllStudent = async (req, res) => {
         
     }
 }
+
+
+exports.getStudentById = async (req, res) => {
+  try {
+    const data = await studentModel.findById(req.params.id)
+    res.status(200).json({
+      message: "Student Record Successfully retrieved..",
+      data
+    })
+  } catch (error) {
+                res.status(500).json({
+                  message: "Something went wrong",
+                  error: error.message,
+                });
+  }
+}
