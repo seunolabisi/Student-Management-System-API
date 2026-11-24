@@ -4,7 +4,7 @@ const {
   oneCourse,
   updateOneCourse,
   deleteCourse,
-} = require("../controllers/course.controllers");
+} = require("../controllers/courseControllers");
 
 const router = require("express").Router();
 

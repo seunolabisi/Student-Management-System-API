@@ -4,7 +4,7 @@ const express = require("express")
 require("./db")
 const studentRouter = require("./routes/studentRouter")
 const departmentRouter = require("./routes/departmentRouter")
-const courserouter = require("./routes/course.router")
+const courserouter = require("./routes/courseRouter")
 PORT = 9999
 
 
