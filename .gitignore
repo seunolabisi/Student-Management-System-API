@@ -1,11 +1,2 @@
-node_modules
-db.js
-.envnode_modules/
-<<<<<<< HEAD
-.env
-=======
 node_modules/
->>>>>>> 72d61392e34f0ca02f5c52babfe8762631af319f
-node_modules/
-db.js
 .env
