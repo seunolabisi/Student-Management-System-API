@@ -5,7 +5,6 @@ exports.createCourse = async (req, res) => {
     try {
         const lecturerid = req.params.lecturerid;
 
-        // check if the user is a stundent before creating course for him
         const findlecturer = await lecturerModel.findById(lecturerid);
         if(!findlecturer){
             return res.status(404).json({
@@ -15,7 +14,9 @@ exports.createCourse = async (req, res) => {
 
         const data = {
             courseCode: req.body.courseCode,
-            courseTitle: req.body.courseTitle
+            courseTitle: req.body.courseTitle,
+            department: findlecturer.department,
+            lecturer:   findlecturer._id
         };
 
         const addCourse = await courseModel.create(data);
@@ -26,7 +27,9 @@ exports.createCourse = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             message: "something is going wrong",
-            error: message.error
+            error: error.message
         });
     }
 };
+
+
