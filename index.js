@@ -5,6 +5,7 @@ require("./db")
 const studentRouter = require("./routes/studentRouter")
 const departmentRouter = require("./routes/departmentRouter")
 const courserouter = require("./routes/courseRouter")
+const lecturerrouter = require("./routes/lecturerRoutes")
 const registrationRouter = require("./routes/registrationRouter")
 PORT = 9999
 
@@ -15,7 +16,7 @@ app.use(express.json())
 app.use(studentRouter)
 app.use(departmentRouter)
 app.use(courserouter)
-app.use(registrationRouter)
+app.use(lecturerrouter)
 
 
 app.listen(PORT, ()=>{console.log(`My port is running on `+PORT)})    
