@@ -71,3 +71,48 @@ exports.getStudentById = async (req, res) => {
                 });
   }
 }
+
+
+exports.updateStudent = async (req, res) => {
+  try {
+    const data = await studentModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json({
+      message: "Student Record Successfully updated..",
+      data
+    })
+    
+  } catch (error) {
+                    res.status(500).json({
+                      message: "Something went wrong",
+                      error: error.message,
+                    });
+    
+  }
+}
+
+
+exports.deleteStudent = async (req, res) => {
+  try {
+    const studentId = req.params.id;
+
+    const data = await studentModel.findByIdAndDelete(studentId)
+
+    if (!data) {
+            return res.status(404).json({
+              message: "Student not found.",
+            });
+    }
+
+    res.status(200).json({
+      message: "Student record deleted Successfully",
+      data
+    })
+    
+  } catch (error) {
+     res.status(500).json({
+    message: "Something went wrong",
+    error: error.message,
+  });
+    
+  }
+}
