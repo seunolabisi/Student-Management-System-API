@@ -17,6 +17,7 @@ app.use(studentRouter)
 app.use(departmentRouter)
 app.use(courserouter)
 app.use(lecturerrouter)
+app.use(registrationRouter)
 
 
 app.listen(PORT, ()=>{console.log(`My port is running on `+PORT)})    

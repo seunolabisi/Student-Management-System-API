@@ -96,11 +96,53 @@ exports.getOneRegistration = async (req, res) => {
 
 exports.updateRegistration = async (req, res) => {
     try {
-        
+        const registrationId = req.params.id
+
+        const data = await registrationModel.findByIdAndUpdate(
+          registrationId,
+          req.body,
+          { new: true, runValidators: true },
+        );
+        if (!data) {
+            return res.status(404).json({
+                message: "Registration not found"
+            })
+        }
+        res.status(200).json({
+            message: "Registration updated successfully",
+            data
+        })
+
     } catch (error) {
         res.status(500).json({
             message: "Something went wrong",
             error: error.message
         })
+    }
+}
+
+
+
+exports.deleteRegistration = async (req, res) => {
+    try {
+        const registrationId = req.params.id
+
+        const data = await registrationModel.findByIdAndDelete(registrationId)
+        if (!data) {
+            return res.status(404).json({
+                message: "Registration not found"
+            })
+        }
+        res.status(200).json({
+            message: "Registration data deleted successfully",
+            data
+        })
+
+    } catch (error) {
+                res.status(500).json({
+                  message: "Something went wrong",
+                  error: error.message,
+                });
+        
     }
 }

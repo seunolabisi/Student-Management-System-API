@@ -15,7 +15,6 @@ const registrationSchema = mongoose.Schema(
     semester: {
       type: String,
       required: true,
-      enum: ["First Semester", "Second Semester"]
     },
     session: {
       type: String,
