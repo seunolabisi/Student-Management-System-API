@@ -17,7 +17,7 @@ exports.createStudent = async (req, res) => {
     const checkEmail = await studentModel.findOne({email: req.body.email})
 
     if (checkMatricNumber || checkEmail) {
-        res.status(400).json({
+        return res.status(400).json({
             message: "Email or Matric Number already exist"
         })
     }
@@ -35,3 +35,39 @@ exports.createStudent = async (req, res) => {
     });
   }
 };
+
+
+
+
+exports.getAllStudent = async (req, res) => {
+    try {
+        const data = await studentModel.find()
+          res.status(200).json({
+            message: "Student Record Successfully retrieved..",
+            data
+        })
+        
+    } catch (error) {
+            res.status(500).json({
+              message: "Something went wrong",
+              error: error.message,
+            });
+        
+    }
+}
+
+
+exports.getStudentById = async (req, res) => {
+  try {
+    const data = await studentModel.findById(req.params.id)
+    res.status(200).json({
+      message: "Student Record Successfully retrieved..",
+      data
+    })
+  } catch (error) {
+                res.status(500).json({
+                  message: "Something went wrong",
+                  error: error.message,
+                });
+  }
+}
